@@ -75,9 +75,9 @@ npm install
 2. Configurar las credenciales en `config/database.js`:
 
 ```javascript
-const sequelize = new Sequelize('Bds_Hidro', 'tu_usuario', 'tu_contraseña', {
-  host: 'localhost',
-  dialect: 'mysql'
+const sequelize = new Sequelize("Bds_Hidro", "tu_usuario", "tu_contraseña", {
+  host: "localhost",
+  dialect: "mysql",
 });
 ```
 
@@ -109,6 +109,7 @@ El servidor se ejecutará en `http://localhost:3000`
 ## 📊 Modelos de Base de Datos
 
 ### Usuario
+
 - **id**: Identificador único
 - **nombre**: Nombre del usuario
 - **email**: Correo electrónico
@@ -116,11 +117,13 @@ El servidor se ejecutará en `http://localhost:3000`
 - **sectorId**: Referencia al sector
 
 ### Sector
+
 - **id**: Identificador único
 - **nombre**: Nombre del sector
 - **descripcion**: Descripción del sector
 
 ### Pago
+
 - **id**: Identificador único
 - **monto**: Cantidad del pago
 - **fecha**: Fecha del pago
@@ -128,6 +131,7 @@ El servidor se ejecutará en `http://localhost:3000`
 - **UsuarioId**: Referencia al usuario
 
 ### Administrador
+
 - **id**: Identificador único
 - **nombre**: Nombre del administrador
 - **email**: Correo electrónico
@@ -136,6 +140,7 @@ El servidor se ejecutará en `http://localhost:3000`
 ## 🛣️ Endpoints de la API
 
 ### Usuarios (`/usuarios`)
+
 - `GET /usuarios` - Obtener todos los usuarios
 - `POST /usuarios` - Crear un nuevo usuario
 - `GET /usuarios/:id` - Obtener usuario por ID
@@ -143,6 +148,7 @@ El servidor se ejecutará en `http://localhost:3000`
 - `DELETE /usuarios/:id` - Eliminar usuario
 
 ### Pagos (`/pagos`)
+
 - `GET /pagos` - Obtener todos los pagos
 - `POST /pagos` - Registrar un nuevo pago
 - `GET /pagos/:id` - Obtener pago por ID
@@ -150,6 +156,7 @@ El servidor se ejecutará en `http://localhost:3000`
 - `DELETE /pagos/:id` - Eliminar pago
 
 ### Administración (`/admin`)
+
 - Endpoints específicos para funcionalidades administrativas
 
 ## 🔧 Scripts Disponibles

@@ -7,11 +7,43 @@ const Sector = require('../models/Sector');
 router.post('/agregar', async (req, res) => {
     const { nombre, apellido, dpi, sectorId } = req.body;
     try {
+        // Verificar que el sector existe antes de crear el usuario
+        const sectorExiste = await Sector.findByPk(sectorId);
+        if (!sectorExiste) {
+            return res.status(400).json({ 
+                error: 'El sector especificado no existe',
+                message: 'Por favor selecciona un sector válido' 
+            });
+        }
+
         const nuevoUsuario = await Usuario.create({ nombre, apellido, dpi, sectorId });
-        res.status(201).json({ usuario: nuevoUsuario });
+        res.status(201).json({ 
+            success: true,
+            message: 'Usuario creado exitosamente',
+            usuario: nuevoUsuario 
+        });
     } catch (error) {
         console.error('Error al agregar usuario:', error);
-        res.status(500).json({ error: error.message });
+        
+        // Manejo específico de errores
+        if (error.name === 'SequelizeForeignKeyConstraintError') {
+            return res.status(400).json({ 
+                error: 'El sector especificado no existe',
+                message: 'Por favor selecciona un sector válido'
+            });
+        }
+        
+        if (error.name === 'SequelizeUniqueConstraintError') {
+            return res.status(400).json({ 
+                error: 'El código de barras ya existe',
+                message: 'Este usuario ya está registrado'
+            });
+        }
+        
+        res.status(500).json({ 
+            error: 'Error interno del servidor',
+            message: error.message 
+        });
     }
 });
 
@@ -71,6 +103,25 @@ router.delete('/:codigoBarras', async (req, res) => {
     } catch (error) {
         console.error('Error al eliminar usuario:', error);
         res.status(500).json({ error: 'Ocurrió un error al intentar eliminar el usuario.' });
+    }
+});
+
+// Ruta para obtener todos los sectores disponibles
+router.get('/sectores/lista', async (req, res) => {
+    try {
+        const sectores = await Sector.findAll({
+            attributes: ['id', 'NombreSector', 'Descripcion']
+        });
+        res.json({ 
+            success: true,
+            sectores: sectores 
+        });
+    } catch (error) {
+        console.error('Error al obtener sectores:', error);
+        res.status(500).json({ 
+            error: 'Error al obtener sectores',
+            message: error.message 
+        });
     }
 });
 
