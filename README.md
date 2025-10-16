@@ -1,32 +1,90 @@
-# 💧 Hidro Saver Backend
+# 💧 Hidro Saver Backend v2.0
 
 ## 📋 Descripción
 
-**Hidro Saver Backend** es la API REST del sistema de gestión de usuarios y pagos para el proyecto Hidro Saver. Este backend proporciona servicios para la administración de usuarios por sectores, gestión de pagos y funcionalidades administrativas para un sistema de gestión de agua potable.
+**Hidro Saver Backend v2.0** es la API REST avanzada del sistema de gestión de usuarios y pagos para el proyecto Hidro Saver. Esta versión mejorada incluye autenticación robusta, reportes avanzados, validaciones estrictas y funcionalidades empresariales para un sistema completo de gestión de agua potable.
 
-## 🚀 Características
+## 🚀 Características Principales
 
-- ✅ **Gestión de Usuarios**: CRUD completo para usuarios del sistema
-- ✅ **Gestión de Sectores**: Organización de usuarios por sectores geográficos
-- ✅ **Sistema de Pagos**: Registro y seguimiento de pagos de usuarios
-- ✅ **Panel Administrativo**: Funcionalidades exclusivas para administradores
-- ✅ **Autenticación JWT**: Sistema seguro de autenticación
-- ✅ **Cifrado de Contraseñas**: Uso de bcrypt para seguridad
-- ✅ **Base de Datos MySQL**: Persistencia de datos confiable
-- ✅ **CORS configurado**: Comunicación segura con el frontend
+### 🔐 **Autenticación y Seguridad**
+
+- ✅ **Sistema de Login Avanzado** con JWT y Refresh Tokens
+- ✅ **Registro de Primer Administrador** automático si no existen admins
+- ✅ **Roles y Permisos** (Admin y SuperAdmin)
+- ✅ **Rate Limiting** para prevenir ataques de fuerza bruta
+- ✅ **Helmet** para headers de seguridad
+- ✅ **Validaciones Joi** estrictas en todos los endpoints
+
+### 👥 **Gestión de Usuarios Mejorada**
+
+- ✅ **CRUD Completo** con validaciones avanzadas
+- ✅ **Búsqueda y Filtrado** por nombre, DPI, sector, código de barras
+- ✅ **Paginación** para manejo de grandes volúmenes
+- ✅ **Generación Automática** de códigos de barras únicos
+- ✅ **Validación de DPI** único por usuario
+- ✅ **Historial de Pagos** por usuario
+
+### 🏢 **Gestión de Sectores**
+
+- ✅ **CRUD de Sectores** con permisos administrativos
+- ✅ **Sectores por Defecto** (Centro, Gonzales, Buena Vista)
+- ✅ **Estadísticas por Sector** (usuarios, pagos, recaudación)
+- ✅ **Validación de Integridad** (no eliminar sectores con usuarios)
+
+### 💰 **Sistema de Pagos Avanzado**
+
+- ✅ **Idempotencia** - previene pagos duplicados por mes
+- ✅ **Transacciones de Base de Datos** para integridad
+- ✅ **Verificación Previa** de estado de pagos
+- ✅ **Historial Completo** de pagos por usuario
+- ✅ **Auditoría de Cambios** con logging detallado
+
+### 📊 **Reportes y Consultas Avanzadas**
+
+- ✅ **Reporte de Morosos** por período y sector
+- ✅ **Reporte de Pagos** con filtros avanzados
+- ✅ **Reporte General** con KPIs y tendencias
+- ✅ **Dashboard Administrativo** con métricas en tiempo real
+- ✅ **Estadísticas por Sector** detalladas
+- ✅ **Comparación con Períodos Anteriores**
+
+### 🔧 **Funcionalidades Técnicas**
+
+- ✅ **Logging Estructurado** con Winston
+- ✅ **Manejo de Errores** centralizado y detallado
+- ✅ **Variables de Entorno** para configuración
+- ✅ **Health Check** endpoint para monitoreo
+- ✅ **Cierre Graceful** del servidor
+- ✅ **Documentación de API** integrada
 
 ## 🛠️ Tecnologías Utilizadas
 
-- **Node.js** - Entorno de ejecución
-- **Express.js** - Framework web
-- **Sequelize** - ORM para base de datos
-- **MySQL** - Sistema de gestión de base de datos
-- **JWT** - Autenticación y autorización
-- **bcrypt** - Cifrado de contraseñas
-- **CORS** - Políticas de origen cruzado
-- **dotenv** - Gestión de variables de entorno
+### **Core Backend**
 
-## 📁 Estructura del Proyecto
+- **Node.js v18+** - Entorno de ejecución moderno
+- **Express.js** - Framework web minimalista
+- **Sequelize** - ORM avanzado para base de datos
+- **MySQL** - Sistema de gestión de base de datos
+
+### **Seguridad**
+
+- **JWT (jsonwebtoken)** - Autenticación stateless
+- **bcrypt** - Hash seguro de contraseñas
+- **Helmet** - Headers de seguridad HTTP
+- **express-rate-limit** - Limitación de tasa de requests
+
+### **Validación y Logging**
+
+- **Joi** - Validación de esquemas de datos
+- **Winston** - Sistema de logging estructurado
+- **CORS** - Políticas de origen cruzado configurables
+
+### **Utilidades**
+
+- **dotenv** - Gestión de variables de entorno
+- **nanoid** - Generación de IDs únicos
+
+## 📁 Estructura del Proyecto Mejorada
 
 ```
 hidro-saver-backend/
